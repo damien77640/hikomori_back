@@ -1,17 +1,17 @@
-require('dotenv').config()
+const express = require("express")
+const app = express()
+const cors = require("cors")
+app.use(cors())
+const router = express.Router();
 
-const express = require('express')
-const api = require('./routes/api')
+const port = process.env.PORT || 5000
 
-function launch(port) {
-  const application = express()
+router.get("/", (req, res) => {
+    res.send("TESTTTTTTTTT");
+})
 
-  application.use('/api', api)
+app.use(router)
 
-  application.listen(port, () => {
-    console.log(`server is started at http://localhost:${port}`)
-  })
-}
-
-const { PORT } = process.env
-launch(PORT || 8080)
+app.listen(port, () => {
+    console.log("Server is listening on port", port)
+})
