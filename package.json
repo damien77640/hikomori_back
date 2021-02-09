@@ -1,6 +1,7 @@
 {
-  "main": "src/main",
+  "main": "src/server",
   "scripts": {
+    "start": "node src/server",
     "dev": "yarn nodemon"
   },
   "dependencies": {
