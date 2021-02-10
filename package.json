@@ -2,6 +2,7 @@
   "main": "src/server",
   "scripts": {
     "start": "nodemon src/server",
+    "seed": "node src/seed",
     "dev": "yarn nodemon"
   },
   "dependencies": {
