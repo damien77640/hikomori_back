@@ -31,7 +31,7 @@ router.get("/manga", (req, res) => {
 
     let tab = [];
 
-    database.from('manga').select("id", "id_manga", "sysopsis", "tittles_en", "tittles_jap", "posterImageLarge", "posterImageOriginal", "posterImageSmall").then((rows)=>{
+    database.from('manga').select("id", "id_manga", "synopsis", "tittles_en", "tittles_jap", "posterImageLarge", "posterImageOriginal", "posterImageSmall").then((rows)=>{
 
         tab = rows
     }).catch((err) => {console.log(err);throw err}).finally(()=>{
