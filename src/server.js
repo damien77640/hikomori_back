@@ -11,13 +11,13 @@ const database = knex({
     connection : {
         host: '127.0.0.1',
         user: 'postgres',
-        password:'cabella13',
+        password:'testpgAdmin',
         database:'manga'
     },
     });
   
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 app.use(router)
 
