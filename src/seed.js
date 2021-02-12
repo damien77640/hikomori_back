@@ -9,7 +9,37 @@ const database = knex({
         database:'manga'
     },
     });
+      database.schema.hasTable('personne').then(function(exists){
+        if(!exists){
+          return database.schema.createTable('personne', function (table) {
+    
+                table.increments('id').primary();
+                table.string('name');
+                table.string('first_name');
+                table.string('mail');
+                table.string('password');
 
+          }).then(
+            console.log("table ok")
+          )
+        }
+      })
+
+      database.insert({   
+        id:1,
+        name:"Dupont",
+        first_name:"Test",
+        mail:"test@test.fr",
+        password:"test"
+      })
+      .into('personne')
+        .then(function (id) {
+            // use id here
+        });
+      
+
+
+        // Mettre en commentaire jusqu'en bas pour creer la table personne
         database.schema.hasTable('manga').then(function(exists){
             if(!exists){
                return database.schema.createTable('manga', function (table) {
@@ -99,4 +129,6 @@ const database = knex({
         }).catch(console.error)
             i++;
           }
+
+        //Jusqu'a ici mettre en commentaire
         

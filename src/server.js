@@ -2,8 +2,10 @@ const express = require("express")
 const app = express()
 const knex = require("knex")
 const cors = require("cors")
+const { default: axios } = require("axios")
 app.use(cors())
-const router = express.Router();
+const router = express.Router()
+
 
 
 const database = knex({
@@ -54,14 +56,26 @@ router.get("/manga/:id", (req, res) => {
   .finally(() => {
    
       res.json(tab)
-  });
-    
-    
-    
+  });    
    
 })
 
+// Récuperer l'ensemble des informations des personne
 
+router.post("/personnes/:mail/:password", (req, res) => {
+    const {mail, password} = req.params
+    database.from('personne').select("*").where({
+        "mail": mail,
+        "password": password
+    }).then((rows) => {
+
+      tab = rows
+    }).catch((err) => { console.log( err); throw err })
+  .finally(() => {
+   
+      res.json(tab)
+  });
+})
 
 
 app.listen(port, () => {
