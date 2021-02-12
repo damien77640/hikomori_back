@@ -3,6 +3,7 @@ const app = express()
 const knex = require("knex")
 const cors = require("cors")
 const { default: axios } = require("axios")
+const dotenv = require("dotenv").config({path:__dirname+'/../.env'})
 app.use(cors())
 const router = express.Router()
 
@@ -11,10 +12,10 @@ const router = express.Router()
 const database = knex({
     client:'pg',
     connection : {
-        host: '127.0.0.1',
-        user: 'postgres',
-        password:'testpgAdmin',
-        database:'manga'
+        host: process.env.HOST,
+        user: process.env.USER,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE
     },
     });
   
